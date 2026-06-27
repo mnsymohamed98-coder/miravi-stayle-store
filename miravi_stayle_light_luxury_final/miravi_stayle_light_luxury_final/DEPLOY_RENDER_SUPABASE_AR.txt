@@ -1,0 +1,16 @@
+خطوات الرفع المختصرة:
+
+1) ارفع كل ملفات هذا المجلد إلى GitHub في نفس Root Directory الذي يستخدمه Render.
+2) في Supabase شغل ملف: supabase/schema.sql
+3) في Render > Environment أضف:
+SUPABASE_URL=https://YOUR-PROJECT.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=ضع المفتاح السري هنا
+SUPABASE_STORAGE_BUCKET=product-images
+MIRAVI_ADMIN_PASSWORD=Miravi2026!
+STORE_PHONE_LOCAL=+972 59-238-6302
+STORE_PHONE_WHATSAPP=972592386302
+
+4) في Render اعمل:
+Manual Deploy > Clear build cache & deploy
+
+مهم: لا تضع SUPABASE_SERVICE_ROLE_KEY في GitHub ولا ترسله لأي شخص.

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>إدارة المنتجات | Miravi STAYLE</title>
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">
+        <img src="./assets/miravi-logo.jpeg" alt="Miravi STAYLE" class="brand-logo small">
+        <div><strong>Miravi Control</strong><span>إدارة المنتجات</span></div>
+      </a>
+      <nav class="top-nav"><a href="./index.html">صفحة الزبائن</a><a href="./admin-orders.html">الطلبات</a></nav>
+    </div>
+  </header>
+
+  <main class="admin-main container">
+    <section id="loginPanel" class="login-panel panel">
+      <h1>دخول لوحة الإدارة</h1>
+      <p class="muted">اكتب كلمة المرور لإدارة المنتجات والمخزون.</p>
+      <div class="login-row"><input id="passwordInput" class="input" type="password" placeholder="كلمة المرور"><button id="loginBtn" class="btn btn-primary">دخول</button></div>
+      <p class="hint">كلمة المرور الافتراضية: <code>Miravi2026!</code></p>
+    </section>
+
+    <section id="adminPanel" hidden>
+      <div class="admin-head">
+        <div><p class="eyebrow">Miravi Control</p><h1>إضافة / تعديل المنتجات</h1><p class="muted">المنتجات والصور تحفظ في Supabase ولا تختفي بعد نوم Render.</p></div>
+        <button id="logoutBtn" class="btn btn-ghost">خروج</button>
+      </div>
+
+      <section class="panel">
+        <form id="productForm" class="admin-form">
+          <input type="hidden" id="productId">
+          <div class="form-grid three">
+            <label>اسم المنتج<input id="name" class="input" required placeholder="مثال: عباية ميرافي كلاسيك"></label>
+            <label>التصنيف<input id="category" class="input" placeholder="عبايات"></label>
+            <label>السعر بالشيكل<input id="price" class="input" type="number" min="0" step="0.01" value="0"></label>
+            <label>المخزون<input id="stock" class="input" type="number" min="0" value="1"></label>
+            <label>الحالة<select id="status" class="input"><option value="available">متوفر</option><option value="limited">كمية محدودة</option><option value="unavailable">غير متوفر</option></select></label>
+            <label class="checkbox-row"><input id="isFeatured" type="checkbox"> إظهار المنتج كمميز</label>
+          </div>
+
+          <div class="image-uploader">
+            <label>صورة المنتج من الجهاز / الجوال
+              <input id="imageFile" class="input" type="file" accept="image/*">
+            </label>
+            <input id="image" type="hidden">
+            <input id="imageData" type="hidden">
+            <div id="imagePreview" class="image-preview"><span>اختاري صورة JPG / PNG / WEBP</span></div>
+            <button id="removeImageBtn" type="button" class="btn btn-danger outline">حذف الصورة</button>
+            <p class="hint">الصور تُضغط تلقائيًا قبل الرفع. لو كانت صورة iPhone بصيغة HEIC ولم تقبل، اختاري Screenshot أو حوّليها إلى JPG.</p>
+          </div>
+
+          <label>الوصف<textarea id="description" class="input" placeholder="وصف مختصر للقطعة والخامة والمقاسات المتوفرة"></textarea></label>
+          <div id="formMessage" class="form-message"></div>
+          <div class="form-actions"><button class="btn btn-primary" type="submit">حفظ المنتج</button><button id="resetBtn" class="btn btn-ghost" type="button">تفريغ النموذج</button></div>
+        </form>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="table-head"><h2>قائمة المنتجات</h2><button id="refreshBtn" class="btn btn-ghost">تحديث</button></div>
+        <div class="table-wrap"><table class="admin-table"><thead><tr><th>الصورة</th><th>المنتج</th><th>التصنيف</th><th>السعر</th><th>المخزون</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody id="productsTable"></tbody></table></div>
+      </section>
+    </section>
+  </main>
+  <script src="./assets/admin-products.js"></script>
+</body>
+</html>

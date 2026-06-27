@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تتبع الطلبات | Miravi STAYLE</title>
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html"><img src="./assets/miravi-logo.jpeg" alt="Miravi STAYLE" class="brand-logo small"><div><strong>Miravi Control</strong><span>تتبع الطلبات</span></div></a>
+      <nav class="top-nav"><a href="./admin-products.html">المنتجات</a><a href="./index.html">صفحة الزبائن</a></nav>
+    </div>
+  </header>
+  <main class="admin-main container">
+    <section id="loginPanel" class="login-panel panel">
+      <h1>دخول لوحة الطلبات</h1>
+      <p class="muted">اكتب كلمة المرور لمتابعة الطلبات.</p>
+      <div class="login-row"><input id="passwordInput" class="input" type="password" placeholder="كلمة المرور"><button id="loginBtn" class="btn btn-primary">دخول</button></div>
+      <p class="hint">كلمة المرور الافتراضية: <code>Miravi2026!</code></p>
+    </section>
+    <section id="adminPanel" hidden>
+      <div class="admin-head"><div><p class="eyebrow">Miravi Control</p><h1>تتبع الطلبات</h1><p class="muted">تابع حالة الطلبات وصدّرها إلى CSV.</p></div><button id="logoutBtn" class="btn btn-ghost">خروج</button></div>
+      <div class="stats-grid"><div class="stat-card"><span>إجمالي الطلبات</span><strong id="totalOrders">0</strong></div><div class="stat-card"><span>طلبات جديدة</span><strong id="newOrders">0</strong></div><div class="stat-card"><span>إجمالي المبيعات</span><strong id="totalSales">0 ₪</strong></div></div>
+      <section class="panel table-panel"><div class="table-head"><h2>قائمة الطلبات</h2><div class="tools"><button id="refreshBtn" class="btn btn-ghost">تحديث</button><button id="exportBtn" class="btn btn-primary">تصدير CSV</button></div></div><div class="table-wrap"><table class="admin-table orders-table"><thead><tr><th>رقم</th><th>المنتج</th><th>الزبونة</th><th>الجوال</th><th>المنطقة</th><th>الإجمالي</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody id="ordersTable"></tbody></table></div></section>
+    </section>
+  </main>
+  <script src="./assets/admin-orders.js"></script>
+</body>
+</html>

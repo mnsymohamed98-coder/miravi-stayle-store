@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: miravi-stayle-store
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: SUPABASE_STORAGE_BUCKET
+        value: product-images
+      - key: MIRAVI_ADMIN_PASSWORD
+        value: Miravi2026!
+      - key: STORE_PHONE_LOCAL
+        value: "+972 59-238-6302"
+      - key: STORE_PHONE_WHATSAPP
+        value: "972592386302"

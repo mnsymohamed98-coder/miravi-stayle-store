@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miravi STAYLE | ميرافي ستايل</title>
+  <meta name="description" content="متجر ميرافي ستايل للأزياء المحتشمة في غزة. التوصيل يشمل كافة مناطق قطاع غزة.">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="./assets/miravi-logo.jpeg" alt="Miravi STAYLE Logo" class="brand-logo">
+        <div>
+          <strong>Miravi STAYLE</strong>
+          <span>ميرافي ستايل</span>
+        </div>
+      </a>
+      <nav class="top-nav">
+        <a href="#products">المنتجات</a>
+        <a href="#booking">الحجز والتواصل</a>
+        <a href="./admin-products.html">لوحة الإدارة</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-glow">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">فلسطين - غزة</p>
+          <h1>أناقة تحتشمين بها</h1>
+          <p class="lead">متجر ميرافي ستايل للأزياء المحتشمة، قطع مختارة بعناية لتناسب ذوقك، مع توصيل يشمل كافة مناطق قطاع غزة.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#products">تصفحي المنتجات</a>
+            <a class="btn btn-ghost" href="https://wa.me/972592386302" target="_blank" rel="noopener">تواصلي واتساب</a>
+          </div>
+          <div class="mini-info">
+            <span>📍 غزة</span>
+            <span>🚚 توصيل لكل القطاع</span>
+            <span>📞 <span id="phoneText">+972 59-238-6302</span></span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="./assets/miravi-logo.jpeg" alt="Miravi STAYLE" class="hero-logo">
+          <h2>Miravi STAYLE</h2>
+          <p>اختيارات راقية، محتشمة، ومناسبة لذوقك.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section products-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">المتجر</p>
+            <h2>كافة المنتجات</h2>
+          </div>
+          <div class="tools">
+            <input id="searchInput" class="input" placeholder="ابحثي عن منتج...">
+            <select id="categoryFilter" class="input"><option value="all">كل التصنيفات</option></select>
+          </div>
+        </div>
+        <div id="productsGrid" class="products-grid">
+          <div class="loading">جاري تحميل المنتجات...</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section section-soft">
+      <div class="container booking-grid">
+        <div>
+          <p class="eyebrow">الحجز والتواصل</p>
+          <h2>احجزي القطعة المناسبة لك بسهولة</h2>
+          <p class="muted">اختاري المنتج واضغطي زر الحجز، وسيتم تسجيل الطلب وفتح واتساب للتأكيد.</p>
+        </div>
+        <div class="contact-card">
+          <span>رقم التواصل</span>
+          <a class="phone-link" href="tel:+972592386302" dir="ltr">+972 59-238-6302</a>
+          <a class="btn btn-primary full" href="https://wa.me/972592386302" target="_blank" rel="noopener">فتح واتساب</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© Miravi STAYLE</span>
+      <span>فلسطين - غزة | التوصيل يشمل كافة مناطق قطاع غزة</span>
+    </div>
+  </footer>
+
+  <div id="orderModal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="modal"></div>
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close="modal">×</button>
+      <h2>تأكيد الحجز</h2>
+      <p id="selectedProductText" class="muted"></p>
+      <form id="orderForm">
+        <input type="hidden" name="productId" id="productId">
+        <div class="form-grid">
+          <label>الاسم الكامل<input class="input" name="customerName" required></label>
+          <label>رقم الجوال<input class="input" name="customerPhone" required inputmode="tel"></label>
+          <label>المنطقة<input class="input" name="area" required placeholder="مثال: رفح، خانيونس، غزة"></label>
+          <label>العنوان التفصيلي<input class="input" name="address" required></label>
+          <label>المقاس<input class="input" name="size" placeholder="اختياري"></label>
+          <label>اللون<input class="input" name="color" placeholder="اختياري"></label>
+          <label>الكمية<input class="input" type="number" min="1" value="1" name="quantity" required></label>
+        </div>
+        <label>ملاحظات<textarea class="input" name="notes" placeholder="أي تفاصيل إضافية"></textarea></label>
+        <div id="orderMessage" class="form-message"></div>
+        <button class="btn btn-primary full" type="submit">تسجيل الطلب وفتح واتساب</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="./assets/customer.js"></script>
+</body>
+</html>
