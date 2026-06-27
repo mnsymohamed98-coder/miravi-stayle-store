@@ -26,7 +26,41 @@ loginBtn.addEventListener('click',()=>{const p=passwordInput.value.trim(); if(!p
 passwordInput.addEventListener('keydown',e=>{if(e.key==='Enter') loginBtn.click();});
 logoutBtn.addEventListener('click',()=>{clearAdminPassword();showLogin();});
 refreshBtn.addEventListener('click',loadOrders);
-exportBtn.addEventListener('click',()=>{ window.open(`/api/admin/export/orders.csv?password=${encodeURIComponent(adminPassword())}`, '_blank'); });
+exportBtn.addEventListener('click', exportOrdersCsv);
+
+async function exportOrdersCsv(){
+  try{
+    const res = await fetch('/api/admin/export/orders.csv', {
+      method: 'GET',
+      headers: { 'x-admin-password': adminPassword() },
+      cache: 'no-store'
+    });
+
+    if(res.status === 401){
+      clearAdminPassword();
+      showLogin();
+      alert('كلمة مرور الإدارة غير صحيحة. سجّل الدخول مرة ثانية.');
+      return;
+    }
+
+    if(!res.ok){
+      const text = await res.text();
+      throw new Error(text || 'فشل تصدير ملف CSV');
+    }
+
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `miravi-orders-${new Date().toISOString().slice(0,10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }catch(error){
+    alert(error.message || 'فشل تصدير ملف CSV');
+  }
+}
 
 async function loadOrders(){
   try{
